@@ -1,0 +1,4 @@
+#0001-Use-system-library.patch
+#0002-prevent-usr-share-dman-from-being-installed.patch
+#0003-Fix-build-with-Qt5.15.patch
+#0004-switch-from-gvfs-trash-to-gio.patch

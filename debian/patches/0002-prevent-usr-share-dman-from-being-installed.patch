@@ -1,0 +1,21 @@
+From: Boyuan Yang <byang@debian.org>
+Date: Mon, 10 Dec 2018 14:08:31 -0500
+Subject: prevent usr/share/dman/* from being installed
+
+---
+ src/music-player/install.pri | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/music-player/install.pri b/src/music-player/install.pri
+index b251aec..81342d3 100644
+--- a/src/music-player/install.pri
++++ b/src/music-player/install.pri
+@@ -19,7 +19,7 @@ translations.files = $$PWD/translations/*.qm
+ hicolor.path =  $${PREFIX}/share/icons/hicolor/scalable/apps
+ hicolor.files = $$PWD/resource/theme/common/image/deepin-music.svg
+ 
+-INSTALLS += target translations desktop_files dman hicolor
++INSTALLS += target translations desktop_files hicolor
+ 
+ GitVersion = $$system(git rev-parse HEAD)
+ DEFINES += GIT_VERSION=\\\"$$GitVersion\\\"

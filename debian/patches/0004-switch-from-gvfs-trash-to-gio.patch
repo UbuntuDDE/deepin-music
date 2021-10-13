@@ -1,0 +1,23 @@
+From: Arun Kumar Pariyar <openarungeek@gmail.com>
+Date: Fri, 4 Dec 2020 21:01:23 +0545
+Subject: [PATCH] Switch from gvfs-trash to gio.
+
+---
+ src/music-player/presenter/presenter.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: deepin-music/src/music-player/presenter/presenter.cpp
+===================================================================
+--- deepin-music.orig/src/music-player/presenter/presenter.cpp
++++ deepin-music/src/music-player/presenter/presenter.cpp
+@@ -1072,7 +1072,9 @@ void Presenter::onMusiclistDelete(Playli
+     if (!qEnvironmentVariableIsEmpty("FLATPAK_APPID")) {
+         Dtk::Widget::DDesktopServices::trash(trashFiles.keys());
+     } else {
+-        QProcess::startDetached("gvfs-trash", trashFiles.keys());
++	QStringList args;
++	args << QStringLiteral("trash") << trashFiles.keys();
++	QProcess::startDetached("gio", args);
+     }
+ 
+     d->library->removeMediaMetaList(metalist);

@@ -1,0 +1,156 @@
+From 6d360f713df58c4946142a425d8dc2ed760bd506 Mon Sep 17 00:00:00 2001
+From: Arun Kumar Pariyar <openarungeek@gmail.com>
+Date: Thu, 3 Dec 2020 02:28:43 +0545
+Subject: [PATCH] Fix build with Qt5.15+
+
+---
+ src/music-player/view/lyricwidget.cpp                           | 2 +-
+ src/music-player/view/widget/cover.cpp                          | 1 +
+ src/music-player/view/widget/delegate/musiclistdatadelegate.cpp | 1 +
+ .../view/widget/delegate/musicsearchlistdelegate.cpp            | 1 +
+ src/music-player/view/widget/delegate/playitemdelegate.cpp      | 1 +
+ src/music-player/view/widget/musicpixmapbutton.cpp              | 1 +
+ src/music-player/view/widget/musictitleimage.cpp                | 1 +
+ src/music-player/view/widget/soundvolume.cpp                    | 1 +
+ src/music-player/view/widget/tooltips.cpp                       | 1 +
+ src/music-player/view/widget/waveform.cpp                       | 1 +
+ src/music-player/view/widget/waveformscale.cpp                  | 2 +-
+ 11 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/src/music-player/view/lyricwidget.cpp b/src/music-player/view/lyricwidget.cpp
+index 2d1093de..d99bc67f 100644
+--- a/src/music-player/view/lyricwidget.cpp
++++ b/src/music-player/view/lyricwidget.cpp
+@@ -30,7 +30,7 @@
+ #include <QPaintEvent>
+ #include <QStringListModel>
+ #include <QAbstractItemDelegate>
+-
++#include <QPainterPath>
+ #include <QListView>
+ #include <DPushButton>
+ #include <DLineEdit>
+diff --git a/src/music-player/view/widget/cover.cpp b/src/music-player/view/widget/cover.cpp
+index 59d5497e..18634267 100644
+--- a/src/music-player/view/widget/cover.cpp
++++ b/src/music-player/view/widget/cover.cpp
+@@ -24,6 +24,7 @@
+ #include <QDebug>
+ #include <QPainter>
+ #include <QGraphicsDropShadowEffect>
++#include <QPainterPath>
+ 
+ static auto borderPenWidth = 1.0;
+ 
+diff --git a/src/music-player/view/widget/delegate/musiclistdatadelegate.cpp b/src/music-player/view/widget/delegate/musiclistdatadelegate.cpp
+index 24e666d8..f7bbc7be 100644
+--- a/src/music-player/view/widget/delegate/musiclistdatadelegate.cpp
++++ b/src/music-player/view/widget/delegate/musiclistdatadelegate.cpp
+@@ -26,6 +26,7 @@
+ #include <QDate>
+ #include <QEvent>
+ #include <QMouseEvent>
++#include <QPainterPath>
+ 
+ #include <DHiDPIHelper>
+ 
+diff --git a/src/music-player/view/widget/delegate/musicsearchlistdelegate.cpp b/src/music-player/view/widget/delegate/musicsearchlistdelegate.cpp
+index f1a25495..8d4bf345 100755
+--- a/src/music-player/view/widget/delegate/musicsearchlistdelegate.cpp
++++ b/src/music-player/view/widget/delegate/musicsearchlistdelegate.cpp
+@@ -25,6 +25,7 @@
+ #include <DHiDPIHelper>
+ #include <QDebug>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QTextDocument>
+ #include <QStyleOptionViewItem>
+ #include <QTextCursor>
+diff --git a/src/music-player/view/widget/delegate/playitemdelegate.cpp b/src/music-player/view/widget/delegate/playitemdelegate.cpp
+index 01d00998..79d3a532 100644
+--- a/src/music-player/view/widget/delegate/playitemdelegate.cpp
++++ b/src/music-player/view/widget/delegate/playitemdelegate.cpp
+@@ -26,6 +26,7 @@
+ #include <QFont>
+ #include <QPainter>
+ #include <QStandardItemModel>
++#include <QPainterPath>
+ 
+ #include <musicmeta.h>
+ 
+diff --git a/src/music-player/view/widget/musicpixmapbutton.cpp b/src/music-player/view/widget/musicpixmapbutton.cpp
+index c591ce65..ef14b03d 100644
+--- a/src/music-player/view/widget/musicpixmapbutton.cpp
++++ b/src/music-player/view/widget/musicpixmapbutton.cpp
+@@ -24,6 +24,7 @@
+ #include <QDebug>
+ #include <QPainter>
+ #include <QRect>
++#include <QPainterPath>
+ 
+ MusicPixmapButton::MusicPixmapButton(QWidget *parent)
+     : DPushButton(parent)
+diff --git a/src/music-player/view/widget/musictitleimage.cpp b/src/music-player/view/widget/musictitleimage.cpp
+index 577484cd..16c2e051 100644
+--- a/src/music-player/view/widget/musictitleimage.cpp
++++ b/src/music-player/view/widget/musictitleimage.cpp
+@@ -22,6 +22,7 @@
+ #include "musictitleimage.h"
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ MusicTitleImageWidget::MusicTitleImageWidget(QWidget *parent)
+     : DWidget( parent)
+diff --git a/src/music-player/view/widget/soundvolume.cpp b/src/music-player/view/widget/soundvolume.cpp
+index 79507306..4bd79e4e 100644
+--- a/src/music-player/view/widget/soundvolume.cpp
++++ b/src/music-player/view/widget/soundvolume.cpp
+@@ -32,6 +32,7 @@
+ #include <DUtil>
+ #include <DSlider>
+ #include <DHiDPIHelper>
++#include <QPainterPath>
+ 
+ #include "core/player.h"
+ 
+diff --git a/src/music-player/view/widget/tooltips.cpp b/src/music-player/view/widget/tooltips.cpp
+index 02c6da8b..c30013a4 100644
+--- a/src/music-player/view/widget/tooltips.cpp
++++ b/src/music-player/view/widget/tooltips.cpp
+@@ -36,6 +36,7 @@
+ #include <QGraphicsDropShadowEffect>
+ #include <QPropertyAnimation>
+ #include <QGraphicsOpacityEffect>
++#include <QPainterPath>
+ 
+ #include <DUtil>
+ #include <dthememanager.h>
+diff --git a/src/music-player/view/widget/waveform.cpp b/src/music-player/view/widget/waveform.cpp
+index 2003bd73..cd0dab29 100644
+--- a/src/music-player/view/widget/waveform.cpp
++++ b/src/music-player/view/widget/waveform.cpp
+@@ -29,6 +29,7 @@
+ #include <QAudioBuffer>
+ #include <QAudioFormat>
+ #include <QWidget>
++#include <QPainterPath>
+ 
+ #include "waveform.h"
+ #include "waveformscale.h"
+diff --git a/src/music-player/view/widget/waveformscale.cpp b/src/music-player/view/widget/waveformscale.cpp
+index 93ab3004..22204263 100755
+--- a/src/music-player/view/widget/waveformscale.cpp
++++ b/src/music-player/view/widget/waveformscale.cpp
+@@ -27,7 +27,7 @@
+ #include <QEvent>
+ #include <QPaintEvent>
+ #include <QPainter>
+-
++#include <QPainterPath>
+ #include <mediameta.h>
+ 
+ const int WaveformScale::WAVE_WIDTH = 2;
+-- 
+2.27.0
+

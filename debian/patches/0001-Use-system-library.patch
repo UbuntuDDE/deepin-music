@@ -1,0 +1,42 @@
+From: Boyuan Yang <byang@debian.org>
+Date: Mon, 10 Dec 2018 14:07:34 -0500
+Subject: Use system library
+Last-Update: 2020-07-02
+
+---
+ src/music-player/build.pri | 8 ++++----
+ src/src.pro                | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/music-player/build.pri b/src/music-player/build.pri
+index 3ce532bf..0fcfa4e8 100644
+--- a/src/music-player/build.pri
++++ b/src/music-player/build.pri
+@@ -58,10 +58,10 @@ DEPENDPATH += $$PWD/../libdmusic
+ 
+ LIBS += -L$$BUILD_DIST/lib/ -ldbusextended-qt5
+ 
+-INCLUDEPATH += $$PWD/../vendor/dbusextended-qt/src
+-DEPENDPATH += $$PWD/../vendor/dbusextended-qt/src
++INCLUDEPATH += $$[QT_INSTALL_HEADERS]/DBusExtended
++DEPENDPATH += $$[QT_INSTALL_HEADERS]/DBusExtended
+ 
+ LIBS += -L$$BUILD_DIST/lib/ -lmpris-qt5
+ 
+-INCLUDEPATH += $$PWD/../vendor/mpris-qt/src
+-DEPENDPATH += $$PWD/../vendor/mpris-qt/src
++INCLUDEPATH += $$[QT_INSTALL_HEADERS]/MprisQt
++DEPENDPATH += $$[QT_INSTALL_HEADERS]/MprisQt
+diff --git a/src/src.pro b/src/src.pro
+index 8b988b20..ac06bfc2 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -5,7 +5,7 @@ isEmpty(PREFIX){
+     PREFIX = /usr
+ }
+ 
+-SUBDIRS +=  vendor
++;SUBDIRS +=  vendor
+ SUBDIRS +=  libdmusic \
+             music-player \
+             plugin \
