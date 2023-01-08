@@ -1,0 +1,5 @@
+version=4
+opts="dversionmangle=s/\+(debian|dfsg|ds|deb)(\.\d+)?$//,repacksuffix=+ds, \
+   filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%deepin-music-$1.tar.gz%" \
+   https://github.com/linuxdeepin/deepin-music/tags \
+   (?:.*?/)?(\d[\d.]*)\.tar\.gz debian uupdate
